@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2021 9:11:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="12-78680181"
+  DTS:CreatorName="SUNEDU\licenciamiento269"
+  DTS:DTSID="{D606F3F1-F1C6-4550-B248-5B5473D0ABA7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{815D46CF-D8E5-4E9A-B217-242B79BA000E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>

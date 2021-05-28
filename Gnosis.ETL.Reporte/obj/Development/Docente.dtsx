@@ -1,0 +1,3060 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2021 9:13:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="12-78680181"
+  DTS:CreatorName="SUNEDU\licenciamiento269"
+  DTS:DTSID="{49E43A5F-E6C3-4B26-BFCE-A22EDEBFD5AC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Docente"
+  DTS:PackageType="5"
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{1BC64192-A183-46A6-A2E7-332E7774279B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F0EBDD7-AD67-4752-9C03-8E31894F9813}"
+      DTS:ObjectName="172.16.90.85.db_linu_DEV1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB4fqygbCmR9gyOTb+Vlkv3AAAAAASAAACgAAAAEAAAALel6gZLLL6ApB/QcJC6A+0QAAAAwosOH4CrrFCODs3jHHhjuRQAAADTXsobe28OzMLCMeheHub+fEbUQQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[conexion_linu_dev]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}"
+      DTS:ObjectName="conexion_linu_dev">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Application Name=SSIS-Docente-{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}172.16.90.85.db_linu_DEV;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADWbYaHMpIp1xf3F9OSPTaeAAAAAASAAACgAAAAEAAAAIsxb7iy35VPXkX97oxStKUQAAAAhiC///wgYjY7SOa0In5Y8xQAAAB2WnU9TMyiP4D+C0tVFiz4TdBsRw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{21648A50-4621-45F3-AE38-67691DB5407E}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\pivotx.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID_ORIGEN_PROGRAMA"
+              DTS:DTSID="{B939EEDA-1A17-43CF-8E6B-F9A9D62E4789}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B8636D5F-23B4-4DCF-8572-06CB39186202}"
+      DTS:ObjectName="idVersion"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">52AC4E0B-6A24-4688-A3AA-A3658C93F0C7</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8BDD01BE-4153-4F1F-9EA1-E426D1B3C20A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT *   FROM programa where  ID_VERSION=CAST ('&quot;+  @[$Package::idVersion]  +&quot;' AS UniqueIdentifier )&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="queryPrograma">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT *   FROM programa where  ID_VERSION=CAST ('52AC4E0B-6A24-4688-A3AA-A3658C93F0C7' AS UniqueIdentifier )</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Carga de mongo a SQL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{BDFC4096-535B-4E3E-8A58-F9F0A54B42FB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga de mongo a SQL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga de mongo a SQL\Guardar datos de docente"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="Guardar datos de docente"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."docente"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga de mongo a SQL\Guardar datos de docente.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].Columns[nombres]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nombres"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRES]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[nombres]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].Columns[idOrigenDocente]"
+                      cachedDataType="guid"
+                      cachedName="idOrigenDocente"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[ID_DOCENTE_ORIGEN]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idOrigenDocente]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].Columns[apellidoMaterno]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="apellidoMaterno"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[APELLIDO_MATERNO]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoMaterno]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].Columns[apellidoPaterno]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="apellidoPaterno"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[APELLIDO_PATERNO]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoPaterno]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].Columns[idVersion]"
+                      cachedDataType="guid"
+                      cachedName="idVersion"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idVersion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[ID_DOCENTE]"
+                      dataType="i4"
+                      name="ID_DOCENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[ID_DOCENTE_ORIGEN]"
+                      dataType="guid"
+                      name="ID_DOCENTE_ORIGEN" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[APELLIDO_MATERNO]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="APELLIDO_MATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[APELLIDO_PATERNO]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="APELLIDO_PATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[NOMBRES]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="NOMBRES" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      dataType="guid"
+                      name="ID_VERSION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga de mongo a SQL\Guardar datos de docente.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de docente.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de docente.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de docente.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga de mongo a SQL\Guardar datos de grado academico"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="Guardar datos de grado academico"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."grado_academico"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[mencion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="mencion"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[MENCION]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[mencion]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[idOrigenGradoAcademico]"
+                      cachedDataType="guid"
+                      cachedName="idOrigenGradoAcademico"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_GRADO_ACADEMICO_ORIGEN]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenGradoAcademico]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[tipoMencionEnum]"
+                      cachedDataType="i4"
+                      cachedName="tipoMencionEnum"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_MENCION_ENUM]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[tipoMencionEnum]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[institucionGrado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="institucionGrado"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[INSTITUCION_GRADO]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[institucionGrado]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[idOrigenDocente]"
+                      cachedDataType="guid"
+                      cachedName="idOrigenDocente"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_DOCENTE_ORIGEN]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenDocente]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].Columns[idVersion]"
+                      cachedDataType="guid"
+                      cachedName="idVersion"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idVersion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_GRADO_ACADEMICO]"
+                      dataType="i4"
+                      name="ID_GRADO_ACADEMICO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_GRADO_ACADEMICO_ORIGEN]"
+                      dataType="guid"
+                      name="ID_GRADO_ACADEMICO_ORIGEN" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[MENCION]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="MENCION" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[TIPO_MENCION_ENUM]"
+                      dataType="i4"
+                      name="TIPO_MENCION_ENUM" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[INSTITUCION_GRADO]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="INSTITUCION_GRADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_DOCENTE_ORIGEN]"
+                      dataType="guid"
+                      name="ID_DOCENTE_ORIGEN" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      dataType="guid"
+                      name="ID_VERSION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga de mongo a SQL\Guardar datos de programa"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="Guardar datos de programa"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."programa"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga de mongo a SQL\Guardar datos de programa.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].Columns[descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="descripcion"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[DESCRIPCION]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[descripcion]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].Columns[idOrigenPrograma]"
+                      cachedDataType="guid"
+                      cachedName="idOrigenPrograma"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_ORIGEN_PROGRAMA]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenPrograma]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].Columns[idOrigenDocente]"
+                      cachedDataType="guid"
+                      cachedName="idOrigenDocente"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_ORIGEN_DOCENTE]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenDocente]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].Columns[idPrograma]"
+                      cachedDataType="guid"
+                      cachedName="idPrograma"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_PROGRMA_REFERENCIA]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idPrograma]" />
+                    <inputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].Columns[idVersion]"
+                      cachedDataType="guid"
+                      cachedName="idVersion"
+                      externalMetadataColumnId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idVersion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_PROGRAMA]"
+                      dataType="i4"
+                      name="ID_PROGRAMA" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[DESCRIPCION]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="DESCRIPCION" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_ORIGEN_PROGRAMA]"
+                      dataType="guid"
+                      name="ID_ORIGEN_PROGRAMA" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_ORIGEN_DOCENTE]"
+                      dataType="guid"
+                      name="ID_ORIGEN_DOCENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_PROGRMA_REFERENCIA]"
+                      dataType="guid"
+                      name="ID_PROGRMA_REFERENCIA" />
+                    <externalMetadataColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input].ExternalColumns[ID_VERSION]"
+                      dataType="guid"
+                      name="ID_VERSION" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga de mongo a SQL\Guardar datos de programa.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de programa.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\Guardar datos de programa.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\Guardar datos de programa.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;10"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="obtiene datos de docente desde mongo"
+              version="10">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="33">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+using SC_60a0acfdadc74b8896084afe34d04057;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        /*
+          Add rows by calling the AddRow method on the member variable named "<Output Name>Buffer".
+          For example, call MyOutputBuffer.AddRow() if your output was named "MyOutput".
+        */
+        var formatoVersion = GetFormatoVersion();
+        var personas = formatoVersion.Personas;
+        var idVersion = Variables.idVersion;
+        foreach (var persona in personas)
+        {
+            DocenteBuffer.AddRow();
+            DocenteBuffer.apellidoMaterno = persona.ApellidoMaterno;
+            DocenteBuffer.apellidoPaterno = persona.ApellidoPaterno;
+            DocenteBuffer.nombres = persona.Nombres;
+            DocenteBuffer.idOrigenDocente = persona.Id;
+            DocenteBuffer.idVersion=new Guid(idVersion);
+            foreach (var gradoAcademico in persona.Docente.GradoAcademicos)
+            {
+
+                GradoAcademicoBuffer.AddRow();
+                GradoAcademicoBuffer.idOrigenDocente = persona.Id;
+                GradoAcademicoBuffer.idOrigenGradoAcademico = gradoAcademico.Id;
+                GradoAcademicoBuffer.mencion = gradoAcademico.Mencion;
+                GradoAcademicoBuffer.tipoMencionEnum = gradoAcademico.TipoMencionEnum;
+                GradoAcademicoBuffer.institucionGrado = gradoAcademico.InstitucionGrado;
+                GradoAcademicoBuffer.idVersion = new Guid(idVersion);
+            }
+            foreach (var programa in persona.Docente.Programas)
+            {
+                ProgramaBuffer.AddRow();
+                ProgramaBuffer.descripcion = programa.Descripcion;
+                ProgramaBuffer.idOrigenDocente = persona.Id;
+                ProgramaBuffer.idOrigenPrograma = programa.Id;
+                ProgramaBuffer.idPrograma = new Guid(programa.IdPrograma);
+                ProgramaBuffer.idVersion = new Guid(idVersion);
+            }
+            foreach (var horarioAsignado in persona.Docente.HoraAsignadas)
+            {
+        }
+        }
+    }
+    private FormatoQueryByIdVersionResponse GetFormatoVersion()
+    {
+        FormatoQueryByIdVersionResponse response = null;
+        HttpClient httpclient = new HttpClient();
+        var urlFormatos =Variables.urlMSFormato;
+        httpclient.BaseAddress = new Uri(urlFormatos);
+        httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        var jsSerializer = new JavaScriptSerializer();
+        var idVersion = Variables.idVersion;
+        var httpRequest = new HttpRequestMessage(HttpMethod.Get, string.Format("api/v1/formato/version/{0}", idVersion));
+        try
+        {
+            var httpResponse = httpclient.SendAsync(httpRequest).GetAwaiter().GetResult();
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                var responseContent = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult(); //.ConfigureAwait(false);
+                response = jsSerializer.Deserialize<FormatoQueryByIdVersionResponse>(responseContent);
+                response.Personas = response.Personas.Where(x => !x.esEliminado).ToList();
+            }
+            else
+            {
+                throw new Exception(httpResponse.RequestMessage.RequestUri.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            //string mensaje = string.Format("Validar Docente - ocurrio un error al obtener el formato: {0}", ex.Message);
+            //Dts.Events.FireError(500, "Script Task", mensaje, ex.Message, 0);
+            //Dts.TaskResult = (int)ScriptResults.Failure;
+            //throw ex;
+        }
+        return response;
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_60a0acfdadc74b8896084afe34d04057.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A26C385-F62C-473D-8D04-009A92D733DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_60a0acfdadc74b8896084afe34d04057</RootNamespace>
+    <AssemblyName>SC_60a0acfdadc74b8896084afe34d04057</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="FormatoQueryByIdVersionResponse.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class DocenteBuffer: ScriptBuffer
+
+{
+    public DocenteBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String nombres
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool nombres_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String apellidoPaterno
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool apellidoPaterno_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String apellidoMaterno
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool apellidoMaterno_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idOrigenDocente
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool idOrigenDocente_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idVersion
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool idVersion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+
+public class ProgramaBuffer: ScriptBuffer
+
+{
+    public ProgramaBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String descripcion
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool descripcion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idPrograma
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool idPrograma_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idOrigenDocente
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool idOrigenDocente_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idOrigenPrograma
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool idOrigenPrograma_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idVersion
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool idVersion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+
+public class GradoAcademicoBuffer: ScriptBuffer
+
+{
+    public GradoAcademicoBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String mencion
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool mencion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 tipoMencionEnum
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool tipoMencionEnum_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String institucionGrado
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool institucionGrado_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idOrigenDocente
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool idOrigenDocente_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idOrigenGradoAcademico
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool idOrigenGradoAcademico_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Guid idVersion
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool idVersion_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_60a0acfdadc74b8896084afe34d04057.Properties.Settings.get_Default():SC_60a0acfdadc74b8896084afe34d04057.Properties.Sett" +
+    "ings")]
+
+namespace SC_60a0acfdadc74b8896084afe34d04057.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public DocenteBuffer DocenteBuffer;
+
+    public ProgramaBuffer ProgramaBuffer;
+
+    public GradoAcademicoBuffer GradoAcademicoBuffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != DocenteBuffer)
+        {
+            DocenteBuffer.SetEndOfRowset();
+            DocenteBuffer = null;
+        }
+
+        if (null != ProgramaBuffer)
+        {
+            ProgramaBuffer.SetEndOfRowset();
+            ProgramaBuffer = null;
+        }
+
+        if (null != GradoAcademicoBuffer)
+        {
+            GradoAcademicoBuffer.SetEndOfRowset();
+            GradoAcademicoBuffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Docente"))
+            {
+                DocenteBuffer = new DocenteBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Programa"))
+            {
+                ProgramaBuffer = new ProgramaBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"GradoAcademico"))
+            {
+                GradoAcademicoBuffer = new GradoAcademicoBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String idVersion
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["idVersion"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String urlMSFormato
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["urlMSFormato"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>SC_60a0acfdadc74b8896084afe34d04057</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>SC_60a0acfdadc74b8896084afe34d04057</msb:DisplayName>
+		<msb:ProjectId>{08FAD2AB-7A92-4131-8735-BC12398C89C0}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_60a0acfdadc74b8896084afe34d04057.csproj"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="FormatoQueryByIdVersionResponse.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_60a0acfdadc74b8896084afe34d04057")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_60a0acfdadc74b8896084afe34d04057")]
+[assembly: AssemblyCopyright("Copyright @  2021")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_60a0acfdadc74b8896084afe34d04057.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_60a0acfdadc74b8896084afe34d04057.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_60a0acfdadc74b8896084afe34d04057.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_60a0acfdadc74b8896084afe34d04057.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_60a0acfdadc74b8896084afe34d04057.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[FormatoQueryByIdVersionResponse.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SC_60a0acfdadc74b8896084afe34d04057
+{
+    public class FormatoQueryByIdVersionResponse
+    {
+        public List<PersonaDto> Personas { get; set; }
+    }
+    public class PersonaDto
+    {
+        public Guid Id { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string Nombres { get; set; }
+        public int TipoSexoEnum { get; set; }
+        public int TipoDocumentoEnum { get; set; }
+        public string DescripcionTipoDocumento { get; set; }
+        public string NumeroDocumento { get; set; }
+        public string CodigoNacionalidad { get; set; }
+        public int TipoPersonaEnum { get; set; }
+        public DocenteDto Docente { get; set; }
+        public Guid? IdTarea { get; set; }
+        public int cantidadProgramaVinculado { get; set; }
+        public bool vincularTodosProgramas { get; set; }
+        public bool esEliminado { get; set; }
+    }
+
+    public class DocenteDto
+    {
+        public int TipoGradoAcademicoMayorEnum { get; set; }
+        public string DescripcionGradoAcademicoMayor { get; set; }
+        public int TipoCategoriaDocenteEnum { get; set; }
+        public int? AnioCategoria { get; set; }
+        public int TipoRegimenDedicatoriaEnum { get; set; }
+        public int ConActividadInvestigacionEnum { get; set; }
+        public int ConRENACYTEnum { get; set; }
+        public int? GrupoRENACYTEnum { get; set; }
+        public int? NivelRENACYTEnum { get; set; }
+        public string ClasificacionRENACYT { get; set; }
+        public DateTime? FechaInicioContrato { get; set; }
+        public DateTime? FechaFinContrato { get; set; }
+        public IEnumerable<int> IdNivelProgramas { get; set; }
+        public string Comentario { get; set; }
+        public IEnumerable<GradoAcademicoDto> GradoAcademicos { get; set; }
+        public IEnumerable<ProgramaDocenteDto> Programas { get; set; }
+        public IEnumerable<HoraActividadDto> HoraAsignadas { get; set; }
+    }
+    public class HoraActividadDto
+    {
+        public Guid Id { get; set; }
+        public int TipoHoraActividadEnum { get; set; }
+        public string DescripcionHoraActividad { get; set; }
+        public int Cantidad { get; set; }
+    }
+    public class ProgramaDocenteDto
+    {
+        public Guid Id { get; set; }
+        public string IdPrograma { get; set; }
+        public string Descripcion { get; set; }
+    }
+    public class GradoAcademicoDto
+    {
+        public Guid Id { get; set; }
+        public int TipoMencionEnum { get; set; }
+        public string Mencion { get; set; }
+        public string CodigoUniversidadGrado { get; set; }
+        public string InstitucionGrado { get; set; }
+        public string CodigoPaisGrado { get; set; }
+        public string ResolucionSunedu { get; set; }
+        public bool? EsTitulado { get; set; }
+        public string DenominacionTitulo { get; set; }
+        public string CodigoPaisTitulo { get; set; }
+        public string CodigoUniversidadTitulo { get; set; }
+        public string InstitucionTitulo { get; set; }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_60a0acfdadc74b8896084afe34d04057.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[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
+3gkGAKICXg4KAC8a3gkGAF0AXg4GANUJXg4GAGgAwwEGANoKoBcGABcW0xcGAAITbxEaAH4K2Awa
+AAsL2AwaAD4KWhEGAG8W+hgGAKUJXg4aANQMXg4OAFkZQRkOAH0AQRkOAHQMQRkOACcJqRUGAMIM
+Xg4GAHYAzRgaAFEJ1hkOAFcaqRUeAJoJuRUGALYRXg4GALwAXg4iABEAJxYiAAEAJxZ7ANwaAAAi
+ACIAJxYGAP8JXg4GALEJXg4GAEMbpBEAAAAA8QAAAAAAAQABAAEAEADNEAAAGAABAAEAAQAQAOMV
+AABpAAEABgABABAAxRUAAGkAAQAUAAEAEADxFQAAaQABACIAAQAQABEaAAB5AAEAMgABABAADRkA
+AGEABgA3AAEAEABxGAAAYQAHADgAAQAQAFYKyQBhAAgAOwABABAAYBTJAGEACQA+AAEAEACEFMkA
+YQAYAF0AAQAQAGsUyQBhACkAgAABABAAfBTJAGEALQCJAAEAEACPFMkAYQAwAJAAAAAQANoXNhhh
+ADwAqQAAARAAxBg2GJ0APgCtAAMhEAC/AQAAYQA/ALAABgANGf4BBgBxGAICBgDjFQYCBgDFFQoC
+BgDxFQ4CAQAfGhICAQAfGhICAQCxCBYCAQAhAx4CAQBKByICAQApByICAQDLCCICAQArBSUCAQAI
+BSUCAQCyByICAQDcByICAQA1AyICAQBGBCUCAQCdAygCAQDNAiwCAQCsBSUCAQCJCDQCAQDzBTQC
+AQBJBSUCAQD9ByICAQCOBCUCAQDmAjcCAQAaBCUCAQC4BCUCAQDYAyUCAQD4AzcCAQC2AzcCAQCn
+AiICAQCNBz4CAQBrBz4CAQBnCEcCAQB7BiICAQDkCE8CAQBMCFgCAQAtCGECAQAhAx4CAQBnBCUC
+AQBzAyICAQBZAyUCAQAhAx4CAQAFAyICAQCPBSICAQAhAx4CAQDnBCUCAQB2BSICAQAQBiICAQA4
+BiICAQBaBiICAQAFCSICAQDXBWoCAQDABiICAQAHByICAQCXBiICAQDkBiICEQDBEHECEQAuCnYC
+EQAyCXsCNgDtAH8CFgA6AIMCUCAAAAAAxgBdDAYAAQBYIAAAAADGAGgMBgABAGAgAAAAAMYArBkG
+AAEA8CIAAAAAgQBIEYwCAQAUJAAAAACGGIkWBgABABwkAAAAAIYYiRaIAQEAJyQAAAAAhgiTGBAA
+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
+AAAAAIYIAQKWAlUAZykAAAAAhgh0AYQBVgBvKQAAAACGCIMBEABWAHgpAAAAAIYI/BCEAVcAgCkA
+AAAAhggMERAAVwDqJgAAAACGGIkWBgBYAIkpAAAAAIYI+gHBAlgAkSkAAAAAhggBApYCWACaKQAA
+AACGCPcPxgJZAKIpAAAAAIYICxABAFkAqykAAAAAhgjYEIQBWgCzKQAAAACGCOQQEABaALwpAAAA
+AIYIZRKEAVsAxCkAAAAAhgiAEhAAWwDNKQAAAACGCJsShAFcANUpAAAAAIYIsBIQAFwA3ikAAAAA
+hgjaEoQBXQDmKQAAAACGCO4SEABdAO8pAAAAAIYIDBuEAV4A9ykAAAAAhgghGxAAXgAAKgAAAACG
+CCcSYANfAAgqAAAAAIYINhJoA18AESoAAAAAhghkE4QBYAAZKgAAAACGCHsTEABgACIqAAAAAIYI
+vhOEAWEAKioAAAAAhgjTExAAYQAzKgAAAACGCCwThAFiADsqAAAAAIYISBMQAGIARCoAAAAAhgiS
+E4QBYwBMKgAAAACGCKgTEABjAOomAAAAAIYYiRYGAGQA6iYAAAAAgxiJFgYAZABVKgAAAACTCBMW
+cQNkAIEqAAAAAJMIFgp3A2QAiCoAAAAAkwgiCn0DZACQKgAAAACWCPAZhANlAJcqAAAAAIYYiRYG
+AGUAnyoAAAAAkRiPFokDZQCrKgAAAACRGI8WiQNlAOomAAAAAIYYiRYGAGUAtyoAAAAAgwBDAI0D
+ZQAAAAEADBYAAAIAnxgAAAMAfBUAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwA
+AAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEADBYAAAIAnxgAAAMAfBUAAAEAlAwAAAEAlAwAAAEA
+lAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEADBYAAAIAnxgA
+AAMAfBUAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEA
+lAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEApBkAAAIA3BYAAAMAhhkAAAQAfBUAAAEANRoAAAEANRoA
+AAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEA
+lAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwA
+AAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEA
+lAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwA
+AAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEA
+lAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAlAwAAAEAPRsJAIkWAQARAIkWBgAZAIkWCgAp
+AIkWEAAxAIkWEAA5AIkWEABBAIkWEABJAIkWEABRAIkWEABZAIkWEABhAIkWEABpAIkWBgC5AIkW
+BgARAYkWBgAxAYkWFQDxAF0MBgDxAGgMBgAMAHsWRQAUAD8aVQDpAIkWEAAcAHsWYgAkAD8aVQBB
+Ab8acgBJAXYKBgAsAHsWYgA0AD8aVQA8AHsWYgBEAD8aVQAUAL8acgCJAIkWBgBRAYkWEACJAI4Z
+rwCJAGwZtgBZAWMavABpAYkWEABMAIoC0ACRAIkWBgBxAc4Z1gB5AcAZ3ACZAIkW4gCJAN4B6gBU
+AE8W/gBcAPwZVQChAEIJDgGhAEsaFAGRAegBGgFkAE8W/gBsAPwZVQCRAJoMMAF0AIkWRAGZAQQK
+SgGZAYsaaAGhAHQJeQGZAMkMfgHBAMAMhAGxAIkWEADRAIkWiAHRAFUOkgHRAEQOAQChAYkWEADR
+ADYbBgDRAOEZBgDRAOQZcgDxAIkWBgDxAPoAnAHxALMYowHBAIkWBgDxAGUYqQGxAUwOrwHxAPca
+tgG5AcgavAHRAcMJwwHRAT8bzAEZAYkW0gE5AYkWBgAuAAsADQQuABMAFgQuABsANQQuACMAPgQu
+ACsAZwQuADMAZwQuADsAZwQuAEMAPgQuAEsAbQQuAFMAZwQuAFsAhARDAGMAzgQBAWsAzgQhAWsA
+zgRBAWsAzgRhAWsAzgSBAWsAzgShAWsAzgTBAWsAzgThAWsAzgTjAXMAzgQBAmsAzgQhAmsAzgQj
+AmsAzgRBAmsAzgRhAmsAzgSBAmsAzgShAmsAzgTBAmsAzgThAmsAzgQBA2sAzgQhA2sAzgRBA2sA
+zgRhA2sAzgSBA2sAzgShA2sAzgTBA2sAzgThA2sAzgQBBGsAzgQhBGsAzgRBBGsAzgRhBGsAzgSB
+BGsAzgShBGsAzgTBBGsAzgThBGsAzgQBBWsAzgQhBWsAzgRBBWsAzgRhBWsAzgSBBWsAzgShBWsA
+zgTBBWsAzgThBWsAzgQBBmsAzgQhBmsAzgRBBmsAzgRhBmsAzgSBBmsAzgShBmsAzgTBBmsAzgTh
+BmsAzgQBB2sAzgQhB2sAzgRBB2sAzgRgB2sAzgRhB2sAzgSAB2sAzgTAB2sAzgTBB2sAzgTgB2sA
+zgQACGsAzgQgCGsAzgRACGsAzgRgCGsAzgSACGsAzgSgCGsAzgTACGsAzgTgCGsAzgQACWsAzgQg
+CWsAzgRACWsAzgRgCWsAzgSACWsAzgSgCWsAzgTACWsAzgTgCWsAzgQACmsAzgQgCmsAzgRACmsA
+zgRgCmsAzgSACmsAzgSgCmsAzgTACmsAzgTgCmsAzgTpCnsANQQAC2sAzgQJC3sANQQgC2sAzgRA
+C2sAzgRgC2sAzgSgC2sAzgTAC2sAzgTgC2sAzgQADGsAzgQgDGsAzgRADGsAzgRgDGsAzgSADGsA
+zgSgDGsAzgTADGsAzgTgDGsAzgQADWsAzgQgDWsAzgRADWsAzgRgDWsAzgSADWsAzgSgDWsAzgTA
+DWsAzgTgDWsAzgQADmsAzgQgDmsAzgRADmsAzgRgDmsAzgSADmsAzgSgDmsAzgTADmsAzgTgDmsA
+zgQAD2sAzgQgD2sAzgRAD2sAzgRgD2sAzgSAD2sAzgSgD2sAzgTAD2sAzgQAEGsAzgQgEGsAzgRA
+EGsAzgRgEGsAzgSAEGsAzgSgEGsAzgTAEGsAzgTgEGsAzgQgEWsAzgRAEWsAzgRgEWsAzgSAEWsA
+zgSgEWsAzgTAEWsAzgQAEmsAzgQgEmsAzgRAEmsAzgRgEmsAzgSAEmsAzgSgEmsAzgTAEmsAzgTg
+EmsAzgQAE2sAzgQgE2sAzgRAE2sAzgRgE2sAzgSAE2sAzgSgE2sAzgTAE2sAzgTgE2sAzgQAFGsA
+zgQgFGsAzgRAFGsAzgRgFGsAzgSAFGsAzgSgFGsAzgTAFGsAzgTgFGsAzgQcAJQAmAEDAAEABAAL
+AAUAFQAIACEACQAjAAoAJAALADMADABEAA0ASAAOAEsADwBXABAAWQAAAJcYkwMAADUOlwMAAFAU
+kwMAABoOlwMAABQUkwMAAP8NlwMAAK8KmwMAAEwNlwMAAD4RmwMAAKwNlwMAACARkwMAAJUNlwMA
+AJYBmwMAABoNlwMAAK8KmwMAAEwNlwMAAKUBmwMAADANlwMAAD4RmwMAAKwNlwMAAPQQkwMAAIIN
+lwMAACMQoAMAAGcNlwMAAMkSkwMAAOMNlwMAAK8KmwMAAEwNlwMAANQRmwMAAMENlwMAAD4RmwMA
+AKwNlwMAAD4RkwMAAKUUkwMAAJcXpAMAAAUCmwMAADwUkwMAAAAUkwMAAIsYkwMAAHQQoAMAAE0Q
+oAMAAC0VkwMAAF4VkwMAACMCkwMAADUPoAMAALcKrQMAAEgBsgMAAA0SoAMAAG8XlwMAAFkSlwMA
+AKUQoAMAAL0WkwMAAJoPoAMAAGYBuwMAAAIPoAMAANkPoAMAAKYOoAMAAM4OuwMAAH4OuwMAACMB
+kwMAAPgUwwMAAMsUwwMAAD8XzQMAACETkwMAADEZ1gMAAHwX4AMAAPwW6gMAAAUCmwMAAGMPoAMA
+AHECkwMAAEcCoAMAAAUCmwMAAIcBkwMAABARkwMAAAUCmwMAAA8QoAMAAOgQkwMAAIQSkwMAALQS
+kwMAAPISkwMAACUbkwMAADoS9AMAAH8TkwMAANcTkwMAAEwTkwMAAKwTkwMAABcW/AMAADYKAgQA
+APQZCAQBAAcAAwABAAgABQABAAkABwABAAoACQABAAsACwABAAwADQABAA0ADwABAA4AEQABAA8A
+EwABABAAFQABABUAFwABABYAGQABABcAGwABABgAHQABABkAHwABABoAIQABABsAIwABABwAJQAB
+AB0AJwABAB4AKQABACMAKwABACQALQABACUALwABACYAMQABACcAMwABACgANQABACkANwABACoA
+OQABACsAOwABACwAPQABAC0APwABAC4AQQACADkAQwACADoARQACADsARwABADwARwACAD4ASQAB
+AD8ASQACAEAASwABAEEASwACAEIATQABAEMATQACAEQATwABAEUATwACAEYAUQABAEcAUQACAEgA
+UwABAEkAUwACAEoAVQABAEsAVQACAEwAVwABAE0AVwACAE4AWQABAE8AWQACAFAAWwABAFEAWwAC
+AFIAXQABAFMAXQACAFQAXwABAFUAXwACAFYAYQABAFcAYQACAFgAYwABAFkAYwACAFoAZQABAFsA
+ZQACAF0AZwABAF4AZwACAF8AaQABAGAAaQACAGEAawABAGIAawACAGMAbQABAGQAbQACAGUAbwAB
+AGYAbwACAGcAcQABAGgAcQACAGkAcwABAGoAcwACAGsAdQABAGwAdQACAG0AdwABAG4AdwACAG8A
+eQABAHAAeQACAHEAewABAHIAewACAHMAfQABAHQAfQACAHUAfwABAHYAfwACAHcAgQABAHgAgQAC
+AHkAgwABAHoAgwACAHsAhQABAHwAhQACAH0AhwABAH4AhwACAIAAiQABAIEAiQACAIIAiwABAIMA
+iwACAIQAjQABAIUAjQACAIYAjwABAIcAjwACAIkAkQABAIoAkQACAIsAkwABAIwAkwACAI0AlQAB
+AI4AlQACAJAAlwABAJEAlwACAJIAmQABAJMAmQACAJQAmwABAJUAmwACAJYAnQABAJcAnQACAJgA
+nwABAJkAnwACAJoAoQABAJsAoQACAJwAowABAJ0AowACAJ4ApQABAJ8ApQACAKAApwABAKEApwAC
+AKIAqQABAKMAqQACAKQAqwABAKUAqwACAKYArQABAKcArQACAKoArwACAKsAsQABAKwAsQACAK0A
+swA+AE4AWgBrAHYAfgCFAI0AxwD2AAcBIwEqATwBBIAAAAEAAAAAAAAAAAAAAAAAyQAAAAQAAAAA
+AAAAAAAAANoBtgEAAAAADQAAAAAAAAAAAAAA4wFuGgAAAAAEAAAAAAAAAAAAAADsAakVAAAAAAQA
+AAAAAAAAAAAAAPUB5BgAAAAADQAAAAAAAAAAAAAA4wGSGgAAAAAEAAAAAAAAAAAAAADaAV4OAAAA
+AAQAAAAAAAAAAAAAANoBCgoAAAAADQAAAAAAAAAAAAAA4wGGFQAAAAAAAAAAAQAAAOQXAAARAAIA
+YwA3AWcAYwFpAGMBAAAAAABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZh
+bHVhdG9yQ29udGV4dDEwMAA8PjlfXzNfMAA8R2V0Rm9ybWF0b1ZlcnNpb24+Yl9fM18wAE51bGxh
+YmxlYDEASUVudW1lcmFibGVgMQBUYXNrYDEASHR0cEhlYWRlclZhbHVlQ29sbGVjdGlvbmAxAFRh
+c2tBd2FpdGVyYDEASUVudW1lcmF0b3JgMQBMaXN0YDEASW50MzIARnVuY2AyAFNDXzYwYTBhY2Zk
+YWRjNzRiODg5NjA4NGFmZTM0ZDA0MDU3ADw+OQA8TW9kdWxlPgBHZXRPdXRwdXRJRABnZXRfQ2xh
+c2lmaWNhY2lvblJFTkFDWVQAc2V0X0NsYXNpZmljYWNpb25SRU5BQ1lUAGdldF9JZFRhcmVhAHNl
+dF9JZFRhcmVhAGdldF9BbmlvQ2F0ZWdvcmlhAHNldF9BbmlvQ2F0ZWdvcmlhAGdldF9JZFByb2dy
+YW1hAHNldF9JZFByb2dyYW1hAHNldF9pZFByb2dyYW1hAHNldF9pZE9yaWdlblByb2dyYW1hAG1z
+Y29ybGliADw+YwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBTZW5kQXN5bmMAUmVhZEFzU3Ry
+aW5nQXN5bmMAZ2V0X0lkAHNldF9JZABnZXRfQ29kaWdvTmFjaW9uYWxpZGFkAHNldF9Db2RpZ29O
+YWNpb25hbGlkYWQAZ2V0X0NhbnRpZGFkAHNldF9DYW50aWRhZABnZXRfRGVzY3JpcGNpb25Ib3Jh
+QWN0aXZpZGFkAHNldF9EZXNjcmlwY2lvbkhvcmFBY3RpdmlkYWQAQWRkAE1hcmtPdXRwdXRzRmlu
+aXNoZWQAR3VpZAA8Q2xhc2lmaWNhY2lvblJFTkFDWVQ+a19fQmFja2luZ0ZpZWxkADxJZFRhcmVh
+PmtfX0JhY2tpbmdGaWVsZAA8QW5pb0NhdGVnb3JpYT5rX19CYWNraW5nRmllbGQAPElkUHJvZ3Jh
+bWE+a19fQmFja2luZ0ZpZWxkADxJZD5rX19CYWNraW5nRmllbGQAPENvZGlnb05hY2lvbmFsaWRh
+ZD5rX19CYWNraW5nRmllbGQAPENhbnRpZGFkPmtfX0JhY2tpbmdGaWVsZAA8RGVzY3JpcGNpb25I
+b3JhQWN0aXZpZGFkPmtfX0JhY2tpbmdGaWVsZAA8RG9jZW50ZT5rX19CYWNraW5nRmllbGQAPE5p
+dmVsUkVOQUNZVEVudW0+a19fQmFja2luZ0ZpZWxkADxDb25SRU5BQ1lURW51bT5rX19CYWNraW5n
+RmllbGQAPEdydXBvUkVOQUNZVEVudW0+a19fQmFja2luZ0ZpZWxkADxUaXBvUmVnaW1lbkRlZGlj
+YXRvcmlhRW51bT5rX19CYWNraW5nRmllbGQAPFRpcG9QZXJzb25hRW51bT5rX19CYWNraW5nRmll
+bGQAPFRpcG9Ib3JhQWN0aXZpZGFkRW51bT5rX19CYWNraW5nRmllbGQAPFRpcG9DYXRlZ29yaWFE
+b2NlbnRlRW51bT5rX19CYWNraW5nRmllbGQAPENvbkFjdGl2aWRhZEludmVzdGlnYWNpb25FbnVt
+PmtfX0JhY2tpbmdGaWVsZAA8VGlwb01lbmNpb25FbnVtPmtfX0JhY2tpbmdGaWVsZAA8VGlwb0Rv
+Y3VtZW50b0VudW0+a19fQmFja2luZ0ZpZWxkADxUaXBvU2V4b0VudW0+a19fQmFja2luZ0ZpZWxk
+ADxUaXBvR3JhZG9BY2FkZW1pY29NYXlvckVudW0+a19fQmFja2luZ0ZpZWxkADxNZW5jaW9uPmtf
+X0JhY2tpbmdGaWVsZAA8RGVzY3JpcGNpb24+a19fQmFja2luZ0ZpZWxkADxjYW50aWRhZFByb2dy
+YW1hVmluY3VsYWRvPmtfX0JhY2tpbmdGaWVsZAA8RXNUaXR1bGFkbz5rX19CYWNraW5nRmllbGQA
+PGVzRWxpbWluYWRvPmtfX0JhY2tpbmdGaWVsZAA8Q29kaWdvVW5pdmVyc2lkYWRHcmFkbz5rX19C
+YWNraW5nRmllbGQAPEluc3RpdHVjaW9uR3JhZG8+a19fQmFja2luZ0ZpZWxkADxDb2RpZ29QYWlz
+R3JhZG8+a19fQmFja2luZ0ZpZWxkADxDb21lbnRhcmlvPmtfX0JhY2tpbmdGaWVsZAA8Q29kaWdv
+VW5pdmVyc2lkYWRUaXR1bG8+a19fQmFja2luZ0ZpZWxkADxEZW5vbWluYWNpb25UaXR1bG8+a19f
+QmFja2luZ0ZpZWxkADxJbnN0aXR1Y2lvblRpdHVsbz5rX19CYWNraW5nRmllbGQAPENvZGlnb1Bh
+aXNUaXR1bG8+a19fQmFja2luZ0ZpZWxkADxBcGVsbGlkb01hdGVybm8+a19fQmFja2luZ0ZpZWxk
+ADxBcGVsbGlkb1BhdGVybm8+a19fQmFja2luZ0ZpZWxkADxGZWNoYUZpbkNvbnRyYXRvPmtfX0Jh
+Y2tpbmdGaWVsZAA8RmVjaGFJbmljaW9Db250cmF0bz5rX19CYWNraW5nRmllbGQAPERlc2NyaXBj
+aW9uVGlwb0RvY3VtZW50bz5rX19CYWNraW5nRmllbGQAPE51bWVyb0RvY3VtZW50bz5rX19CYWNr
+aW5nRmllbGQAPERlc2NyaXBjaW9uR3JhZG9BY2FkZW1pY29NYXlvcj5rX19CYWNraW5nRmllbGQA
+PEhvcmFBc2lnbmFkYXM+a19fQmFja2luZ0ZpZWxkADxQcm9ncmFtYXM+a19fQmFja2luZ0ZpZWxk
+ADxJZE5pdmVsUHJvZ3JhbWFzPmtfX0JhY2tpbmdGaWVsZAA8dmluY3VsYXJUb2Rvc1Byb2dyYW1h
+cz5rX19CYWNraW5nRmllbGQAPFBlcnNvbmFzPmtfX0JhY2tpbmdGaWVsZAA8Tm9tYnJlcz5rX19C
+YWNraW5nRmllbGQAPEdyYWRvQWNhZGVtaWNvcz5rX19CYWNraW5nRmllbGQAPFJlc29sdWNpb25T
+dW5lZHU+a19fQmFja2luZ0ZpZWxkAEh0dHBNZXRob2QAZGVmYXVsdEluc3RhbmNlAGdldF9TdGF0
+dXNDb2RlAEh0dHBTdGF0dXNDb2RlAEh0dHBSZXNwb25zZU1lc3NhZ2UAZ2V0X1JlcXVlc3RNZXNz
+YWdlAEh0dHBSZXF1ZXN0TWVzc2FnZQBFbnVtZXJhYmxlAElEaXNwb3NhYmxlAFJ1bnRpbWVUeXBl
+SGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAERhdGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRz
+LlBpcGVsaW5lAFR5cGUAV2hlcmUAU3lzdGVtLkNvcmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUA
+cmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAEZvcm1hdG9RdWVyeUJ5SWRW
+ZXJzaW9uUmVzcG9uc2UARGlzcG9zZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBnZXRfRG9jZW50ZQBz
+ZXRfRG9jZW50ZQBzZXRfaWRPcmlnZW5Eb2NlbnRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRl
+AERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JC
+cm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFy
+a0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9u
+QXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0
+aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
+dHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlD
+b21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUA
+UG9zdEV4ZWN1dGUATWVkaWFUeXBlV2l0aFF1YWxpdHlIZWFkZXJWYWx1ZQB2YWx1ZQBEZXNlcmlh
+bGl6ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAGdldF9SZXF1ZXN0VXJpAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTQ182MGEwYWNmZGFkYzc0Yjg4OTYwODRhZmUzNGQwNDA1Ny5k
+bGwAc2V0X2lkUHJvZ3JhbWFfSXNOdWxsAHNldF9pZE9yaWdlblByb2dyYW1hX0lzTnVsbABzZXRf
+aWRPcmlnZW5Eb2NlbnRlX0lzTnVsbABzZXRfdGlwb01lbmNpb25FbnVtX0lzTnVsbABzZXRfbWVu
+Y2lvbl9Jc051bGwAc2V0X2Rlc2NyaXBjaW9uX0lzTnVsbABzZXRfaWRWZXJzaW9uX0lzTnVsbABz
+ZXRfaWRPcmlnZW5HcmFkb0FjYWRlbWljb19Jc051bGwAc2V0X2luc3RpdHVjaW9uR3JhZG9fSXNO
+dWxsAHNldF9hcGVsbGlkb01hdGVybm9fSXNOdWxsAHNldF9hcGVsbGlkb1BhdGVybm9fSXNOdWxs
+AHNldF9ub21icmVzX0lzTnVsbABTZXROdWxsAGdldF9JdGVtAHNldF9JdGVtAFN5c3RlbQBnZXRf
+Tml2ZWxSRU5BQ1lURW51bQBzZXRfTml2ZWxSRU5BQ1lURW51bQBnZXRfQ29uUkVOQUNZVEVudW0A
+c2V0X0NvblJFTkFDWVRFbnVtAGdldF9HcnVwb1JFTkFDWVRFbnVtAHNldF9HcnVwb1JFTkFDWVRF
+bnVtAGdldF9UaXBvUmVnaW1lbkRlZGljYXRvcmlhRW51bQBzZXRfVGlwb1JlZ2ltZW5EZWRpY2F0
+b3JpYUVudW0AZ2V0X1RpcG9QZXJzb25hRW51bQBzZXRfVGlwb1BlcnNvbmFFbnVtAGdldF9UaXBv
+SG9yYUFjdGl2aWRhZEVudW0Ac2V0X1RpcG9Ib3JhQWN0aXZpZGFkRW51bQBnZXRfVGlwb0NhdGVn
+b3JpYURvY2VudGVFbnVtAHNldF9UaXBvQ2F0ZWdvcmlhRG9jZW50ZUVudW0AZ2V0X0NvbkFjdGl2
+aWRhZEludmVzdGlnYWNpb25FbnVtAHNldF9Db25BY3RpdmlkYWRJbnZlc3RpZ2FjaW9uRW51bQBn
+ZXRfVGlwb01lbmNpb25FbnVtAHNldF9UaXBvTWVuY2lvbkVudW0Ac2V0X3RpcG9NZW5jaW9uRW51
+bQBnZXRfVGlwb0RvY3VtZW50b0VudW0Ac2V0X1RpcG9Eb2N1bWVudG9FbnVtAGdldF9UaXBvU2V4
+b0VudW0Ac2V0X1RpcG9TZXhvRW51bQBnZXRfVGlwb0dyYWRvQWNhZGVtaWNvTWF5b3JFbnVtAHNl
+dF9UaXBvR3JhZG9BY2FkZW1pY29NYXlvckVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBnZXRf
+TWVuY2lvbgBzZXRfTWVuY2lvbgBzZXRfbWVuY2lvbgBnZXRfRGVzY3JpcGNpb24Ac2V0X0Rlc2Ny
+aXBjaW9uAHNldF9kZXNjcmlwY2lvbgBnZXRfaWRWZXJzaW9uAHNldF9pZFZlcnNpb24AR2V0Rm9y
+bWF0b1ZlcnNpb24AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lz
+dGVtLldlYi5TY3JpcHQuU2VyaWFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3Bl
+cmF0aW9uRXhjZXB0aW9uAHNldF9pZE9yaWdlbkdyYWRvQWNhZGVtaWNvAGdldF9jYW50aWRhZFBy
+b2dyYW1hVmluY3VsYWRvAHNldF9jYW50aWRhZFByb2dyYW1hVmluY3VsYWRvAGdldF9Fc1RpdHVs
+YWRvAHNldF9Fc1RpdHVsYWRvAGdldF9lc0VsaW1pbmFkbwBzZXRfZXNFbGltaW5hZG8AZ2V0X0Nv
+ZGlnb1VuaXZlcnNpZGFkR3JhZG8Ac2V0X0NvZGlnb1VuaXZlcnNpZGFkR3JhZG8AZ2V0X0luc3Rp
+dHVjaW9uR3JhZG8Ac2V0X0luc3RpdHVjaW9uR3JhZG8Ac2V0X2luc3RpdHVjaW9uR3JhZG8AZ2V0
+X0NvZGlnb1BhaXNHcmFkbwBzZXRfQ29kaWdvUGFpc0dyYWRvAEN1bHR1cmVJbmZvAGdldF9Db21l
+bnRhcmlvAHNldF9Db21lbnRhcmlvAGdldF9Db2RpZ29Vbml2ZXJzaWRhZFRpdHVsbwBzZXRfQ29k
+aWdvVW5pdmVyc2lkYWRUaXR1bG8AZ2V0X0Rlbm9taW5hY2lvblRpdHVsbwBzZXRfRGVub21pbmFj
+aW9uVGl0dWxvAGdldF9JbnN0aXR1Y2lvblRpdHVsbwBzZXRfSW5zdGl0dWNpb25UaXR1bG8AZ2V0
+X0NvZGlnb1BhaXNUaXR1bG8Ac2V0X0NvZGlnb1BhaXNUaXR1bG8AZ2V0X0FwZWxsaWRvTWF0ZXJu
+bwBzZXRfQXBlbGxpZG9NYXRlcm5vAHNldF9hcGVsbGlkb01hdGVybm8AZ2V0X0FwZWxsaWRvUGF0
+ZXJubwBzZXRfQXBlbGxpZG9QYXRlcm5vAHNldF9hcGVsbGlkb1BhdGVybm8AUGVyc29uYUR0bwBI
+b3JhQWN0aXZpZGFkRHRvAFByb2dyYW1hRG9jZW50ZUR0bwBHcmFkb0FjYWRlbWljb0R0bwBnZXRf
+dXJsTVNGb3JtYXRvAGdldF9GZWNoYUZpbkNvbnRyYXRvAHNldF9GZWNoYUZpbkNvbnRyYXRvAGdl
+dF9GZWNoYUluaWNpb0NvbnRyYXRvAHNldF9GZWNoYUluaWNpb0NvbnRyYXRvAGdldF9EZXNjcmlw
+Y2lvblRpcG9Eb2N1bWVudG8Ac2V0X0Rlc2NyaXBjaW9uVGlwb0RvY3VtZW50bwBnZXRfTnVtZXJv
+RG9jdW1lbnRvAHNldF9OdW1lcm9Eb2N1bWVudG8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAATWlj
+cm9zb2Z0LlNxbFNlcnZlci5EVFNSdW50aW1lV3JhcABTeXN0ZW0uTmV0Lkh0dHAAU3lzdGVtLkxp
+bnEAUHJvZ3JhbWFCdWZmZXIAUGlwZWxpbmVCdWZmZXIARG9jZW50ZUJ1ZmZlcgBHcmFkb0FjYWRl
+bWljb0J1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgBNaWNyb3NvZnQuU3Fs
+U2VydmVyLkR0cy5SdW50aW1lLldyYXBwZXIAR2V0QXdhaXRlcgBKYXZhU2NyaXB0U2VyaWFsaXpl
+cgBJRW51bWVyYXRvcgBHZXRFbnVtZXJhdG9yAC5jdG9yAC5jY3RvcgBnZXRfRGVzY3JpcGNpb25H
+cmFkb0FjYWRlbWljb01heW9yAHNldF9EZXNjcmlwY2lvbkdyYWRvQWNhZGVtaWNvTWF5b3IAT3V0
+cHV0SURzAGdldF9Ib3JhQXNpZ25hZGFzAHNldF9Ib3JhQXNpZ25hZGFzAGdldF9Qcm9ncmFtYXMA
+c2V0X1Byb2dyYW1hcwBnZXRfSWROaXZlbFByb2dyYW1hcwBzZXRfSWROaXZlbFByb2dyYW1hcwBn
+ZXRfdmluY3VsYXJUb2Rvc1Byb2dyYW1hcwBzZXRfdmluY3VsYXJUb2Rvc1Byb2dyYW1hcwBnZXRf
+UGVyc29uYXMAc2V0X1BlcnNvbmFzAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5D
+b21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfNjBhMGFjZmRhZGM3NGI4ODk2MDg0
+YWZlMzRkMDQwNTcuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVz
+AFNDXzYwYTBhY2ZkYWRjNzRiODg5NjA4NGFmZTM0ZDA0MDU3LlByb3BlcnRpZXMAZ2V0X1JlYWRP
+bmx5VmFyaWFibGVzAGdldF9Ob21icmVzAHNldF9Ob21icmVzAHNldF9ub21icmVzAEJ1ZmZlckNv
+bHVtbkluZGV4ZXMAR2V0Q29sdW1uSW5kZXhlcwBTZXR0aW5ncwBTeXN0ZW0uVGhyZWFkaW5nLlRh
+c2tzAFN5c3RlbS5XZWIuRXh0ZW5zaW9ucwBTeXN0ZW0uQ29sbGVjdGlvbnMAQ29ubmVjdGlvbnMA
+Z2V0X0dyYWRvQWNhZGVtaWNvcwBzZXRfR3JhZG9BY2FkZW1pY29zAFN5c3RlbS5OZXQuSHR0cC5I
+ZWFkZXJzAEh0dHBSZXF1ZXN0SGVhZGVycwBnZXRfRGVmYXVsdFJlcXVlc3RIZWFkZXJzAEJ1ZmZl
+cnMAc2V0X0Jhc2VBZGRyZXNzAEZpbmlzaE91dHB1dHMAQ3JlYXRlTmV3T3V0cHV0Um93cwBGb3Jt
+YXQAT2JqZWN0AGdldF9HZXQAU3lzdGVtLk5ldABTZXRFbmRPZlJvd3NldABnZXRfRGVmYXVsdABH
+ZXRSZXN1bHQASHR0cENsaWVudABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRD
+b21wb25lbnQAZ2V0X0N1cnJlbnQAZ2V0X0NvbnRlbnQASHR0cENvbnRlbnQAZ2V0X0FjY2VwdABN
+aWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AFRvTGlzdABNaWNyb3NvZnQuU3FsU2VydmVyLlBp
+cGVsaW5lSG9zdABQcmltZU91dHB1dABNb3ZlTmV4dABHZXRWYWx1ZVdpdGhDb250ZXh0AFNjcmlw
+dENvbXBvbmVudEV2YWxDb250ZXh0AGdldF9FdmFsdWF0b3JDb250ZXh0AGdldF9SZXNvbHVjaW9u
+U3VuZWR1AHNldF9SZXNvbHVjaW9uU3VuZWR1AEFkZFJvdwB4AGdldF9Bc3NlbWJseQAAIWEAcABw
+AGwAaQBjAGEAdABpAG8AbgAvAGoAcwBvAG4AADVhAHAAaQAvAHYAMQAvAGYAbwByAG0AYQB0AG8A
+LwB2AGUAcgBzAGkAbwBuAC8AewAwAH0AAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkA
+IABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBp
+AGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMA
+dABlAGEAZAAuAAAPRABvAGMAZQBuAHQAZQAAEVAAcgBvAGcAcgBhAG0AYQAAHUcAcgBhAGQAbwBB
+AGMAYQBkAGUAbQBpAGMAbwAAE2kAZABWAGUAcgBzAGkAbwBuAAAZdQByAGwATQBTAEYAbwByAG0A
+YQB0AG8AAHFTAEMAXwA2ADAAYQAwAGEAYwBmAGQAYQBkAGMANwA0AGIAOAA4ADkANgAwADgANABh
+AGYAZQAzADQAZAAwADQAMAA1ADcALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIA
+YwBlAHMAAAAA0VKsFzsPRE+/dcvoUlNRQgAEIAEBCAMgAAEFIAEBEREEIAEBDgYgAQERgJUhBwgO
+FRE9ARIoEigVEkEBEjgSOBUSQQESNBI0FRJBARIwBhUSOQESKAggABURPQETAAYVET0BEigEIAAT
+AAcVEoCFARI4CCAAFRJBARMABhUSQQESOAMgAAIHFRKAhQESNAYVEkEBEjQHFRKAhQESMAYVEkEB
+EjAaBwoSJBJFDhJJDhJNElEVEVUBElEOFRFVAQ4GIAEBEoCpBSAAEoCtCiAAFRKAsQESgLUIFRKA
+sQESgLUFIAEBEwAFAAASgLkFAAIODhwHIAIBEoC5DgsgARUSgMEBElESTQcVEoDBARJRCCAAFRFV
+ARMABhURVQESUQUgABGAxQUgABKAyQggABUSgMEBDgYVEoDBAQ4FFRFVAQ4GMAEBHgAOBAoBEiQH
+FRJlAhIoAgUgAgEcGBgQAQIVEoCFAR4AFRKAhQEeABUSZQIeAAIECgESKBAQAQEVEjkBHgAVEoCF
+AR4ABCAAEk0FIAASgKkDIAAOCSADARJtHQgScQUgAgEIHAMHAQgGAAIIEnEOBSABHQgIBSAAEoDZ
+BiABEoDdHAUAABKA4QYgARwSgOUIAAESgOkRgO0FIAASgPEHIAIBDhKA8Qi3elxWGTTgiQiJhF3N
+gIDMkQiwP19/EdUKOggxvzhWrTZONQMGEhwDBhIgAwYSDAMGEhADBhIUAwYSeQcGFRI5ARIoAwYR
+dQIGDgIGCAMGEiwHBhURfQERdQIGAgYGFRF9AQgIBhURfQERgIEHBhUSgIUBCAgGFRKAhQESOAgG
+FRKAhQESNAgGFRKAhQESMAYGFRF9AQIEBhKAjQQGEoCRAwYSQAMGEkQIBhUSZQISKAIEIAASJAQg
+AQECBSABARF1CyAEAQgdCB0SbRJxBSABARJ5CCAAFRI5ARIoCSABARUSOQESKAQgABF1AyAACAQg
+ABIsBSABARIsCCAAFRF9ARF1CSABARURfQERdQcgABURfQEICCABARURfQEICSAAFRF9ARGAgQog
+AQEVEX0BEYCBCCAAFRKAhQEICSABARUSgIUBCAkgABUSgIUBEjgKIAEBFRKAhQESOAkgABUSgIUB
+EjQKIAEBFRKAhQESNAkgABUSgIUBEjAKIAEBFRKAhQESMAcgABURfQECCCABARURfQECBQAAEoCN
+BQAAEoCRBgABARKAkQQAABJAAwAAAQUgAQISKAMoAA4DKAACBCgAEXUDKAAICCgAFRI5ARIoBCgA
+EiwIKAAVEX0BEXUHKAAVEX0BCAkoABURfQERgIEIKAAVEoCFAQgJKAAVEoCFARI4CSgAFRKAhQES
+NAkoABUSgIUBEjAHKAAVEX0BAgUIABKAjQUIABKAkQQIABJACAEACAAAAAAAHgEAAQBUAhZXcmFw
+Tm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ182MGEwYWNmZGFkYzc0Yjg4OTYwODRh
+ZmUzNGQwNDA1NwAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIxAABJAQAaLk5FVEZyYW1ld29y
+ayxWZXJzaW9uPXY0LjUBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQu
+NQQBAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwg
+bXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+bj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAA
+AAAAAAAAAAAAUEFEUEFEULQAAADUagAAAAAAAAAAAADuagAAACAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAA4GoAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAAB
+AAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWIAAAOwDAAAAAAAAAAAAAOwDNAAAAFYA
+UwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/
+AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAA
+AAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsARMAwAAAQBTAHQAcgBpAG4AZwBG
+AGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUA
+bgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBp
+AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAQwBfADYAMABhADAAYQBjAGYAZABhAGQA
+YwA3ADQAYgA4ADgAOQA2ADAAOAA0AGEAZgBlADMANABkADAANAAwADUANwAAADAACAABAEYAaQBs
+AGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEA
+bABOAGEAbQBlAAAAUwBDAF8ANgAwAGEAMABhAGMAZgBkAGEAZABjADcANABiADgAOAA5ADYAMAA4
+ADQAYQBmAGUAMwA0AGQAMAA0ADAANQA3AC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAA
+eQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADEAAAAqAAEAAQBM
+AGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEA
+bABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwA2ADAAYQAwAGEAYwBmAGQAYQBkAGMANwA0AGIAOAA4
+ADkANgAwADgANABhAGYAZQAzADQAZAAwADQAMAA1ADcALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQA
+dQBjAHQATgBhAG0AZQAAAAAAUwBDAF8ANgAwAGEAMABhAGMAZgBkAGEAZABjADcANABiADgAOAA5
+ADYAMAA4ADQAYQBmAGUAMwA0AGQAMAA0ADAANQA3AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUA
+cgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQBy
+AHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAGAAAAwAAAAAOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_60a0acfdadc74b8896084afe34d04057</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::idVersion,$Project::urlMSFormato</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">deb4c213fce51be2ba14370f4a587f88</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataShaChecksum"
+                  typeConverter="NOTBROWSABLE">f34d059d2a05ce3efa96af82356d051ce08882d4</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente]"
+                  hasSideEffects="true"
+                  name="Docente">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[nombres]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[nombres]"
+                      name="nombres" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoPaterno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoPaterno]"
+                      name="apellidoPaterno" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoMaterno]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[apellidoMaterno]"
+                      name="apellidoMaterno" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idOrigenDocente]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idOrigenDocente]"
+                      name="idOrigenDocente" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idVersion]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente].Columns[idVersion]"
+                      name="idVersion" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa]"
+                  hasSideEffects="true"
+                  name="Programa">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[descripcion]"
+                      name="descripcion" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idPrograma]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idPrograma]"
+                      name="idPrograma" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenDocente]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenDocente]"
+                      name="idOrigenDocente" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenPrograma]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idOrigenPrograma]"
+                      name="idOrigenPrograma" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idVersion]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa].Columns[idVersion]"
+                      name="idVersion" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico]"
+                  hasSideEffects="true"
+                  name="GradoAcademico">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[mencion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[mencion]"
+                      name="mencion" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[tipoMencionEnum]"
+                      dataType="i4"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[tipoMencionEnum]"
+                      name="tipoMencionEnum" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[institucionGrado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[institucionGrado]"
+                      name="institucionGrado" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenDocente]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenDocente]"
+                      name="idOrigenDocente" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenGradoAcademico]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idOrigenGradoAcademico]"
+                      name="idOrigenGradoAcademico" />
+                    <outputColumn
+                      refId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idVersion]"
+                      dataType="guid"
+                      lineageId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico].Columns[idVersion]"
+                      name="idVersion" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga de mongo a SQL.Paths[Docente]"
+              endId="Package\Carga de mongo a SQL\Guardar datos de docente.Inputs[ADO NET Destination Input]"
+              name="Docente"
+              startId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Docente]" />
+            <path
+              refId="Package\Carga de mongo a SQL.Paths[GradoAcademico]"
+              endId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Inputs[ADO NET Destination Input]"
+              name="GradoAcademico"
+              startId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[GradoAcademico]" />
+            <path
+              refId="Package\Carga de mongo a SQL.Paths[Programa]"
+              endId="Package\Carga de mongo a SQL\Guardar datos de programa.Inputs[ADO NET Destination Input]"
+              name="Programa"
+              startId="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo.Outputs[Programa]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Elimina registros"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EEA22E34-C197-4EF7-8124-350A487E876E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Elimina registros"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3F0EBDD7-AD67-4752-9C03-8E31894F9813}"
+          SQLTask:SqlStatementSource="delete from docente;  &#xA;delete from programa;&#xA;delete from grado_academico;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Pivot de Programa"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{5D13B063-8B08-43DE-9BC5-79DC47F1296D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pivot de Programa"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Pivot de Programa\Dinamización"
+              componentClassID="Microsoft.Pivot"
+              contactInfo="Dinamización;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Compacta un flujo de datos de entrada dinamizándolo con un valor de columna, de modo que pasa a ser menos normalizado. Los datos de entrada deben ordenarse por la columna dinámica porque se produce una dinamización cada vez que cambian los datos de la columna dinámica. Nota: si hay filas duplicadas, se generará un error en esta transformación."
+              name="Dinamización"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Hace que la transformación de dinamización omita las filas que contienen valores no reconocidos en la columna Clave dinámica y registre la lista completa de valores no coincidentes al final de la ejecución de DataFlow. Sirve para recopilar una lista de valores de filas de entrada, que se puede usar para generar automáticamente columnas de salida."
+                  name="PassThroughUnmatchedPivotKeys">true</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Pivot de Programa\Dinamización.Inputs[Entrada predeterminada dinámica]"
+                  hasSideEffects="true"
+                  name="Entrada predeterminada dinámica">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Pivot de Programa\Dinamización.Inputs[Entrada predeterminada dinámica].Columns[ID_ORIGEN_DOCENTE]"
+                      cachedDataType="guid"
+                      cachedName="ID_ORIGEN_DOCENTE"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_ORIGEN_DOCENTE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Describe cómo participa la columna de entrada en la operación de dinamización. Puede ayudar a definir un conjunto de registros relacionados; puede contener la clave que identifica de forma exclusiva una fila dentro del conjunto relacionado y sobre la que se dinamizan los valores; puede contener un valor que se transfiere a una columna dinamizada o puede contener un valor que pasa directamente sin ningún cambio."
+                          name="PivotUsage">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Pivot de Programa\Dinamización.Inputs[Entrada predeterminada dinámica].Columns[ID_VERSION]"
+                      cachedDataType="guid"
+                      cachedName="ID_VERSION"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_VERSION]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Describe cómo participa la columna de entrada en la operación de dinamización. Puede ayudar a definir un conjunto de registros relacionados; puede contener la clave que identifica de forma exclusiva una fila dentro del conjunto relacionado y sobre la que se dinamizan los valores; puede contener un valor que se transfiere a una columna dinamizada o puede contener un valor que pasa directamente sin ningún cambio."
+                          name="PivotUsage">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Pivot de Programa\Dinamización.Outputs[Salida predeterminada dinámica]"
+                  name="Salida predeterminada dinámica">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Dinamización.Outputs[Salida predeterminada dinámica].Columns[ID_VERSION]"
+                      dataType="guid"
+                      lineageId="Package\Pivot de Programa\Dinamización.Outputs[Salida predeterminada dinámica].Columns[ID_VERSION]"
+                      name="ID_VERSION">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="El identificador de linaje de una columna de entrada que contiene un valor PivotedValue o el valor -1. El valor -1 indica que la columna no se usa en una operación de dinamización"
+                          name="SourceColumn">#{Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_VERSION]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica un valor que coincide con uno de los valores posibles de la columna de entrada que está marcada como clave dinámica en la propiedad PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Pivot de Programa\Dinamización.Outputs[Salida de error dinámica]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error dinámica"
+                  synchronousInputId="Package\Pivot de Programa\Dinamización.Inputs[Entrada predeterminada dinámica]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Dinamización.Outputs[Salida de error dinámica].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pivot de Programa\Dinamización.Outputs[Salida de error dinámica].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Dinamización.Outputs[Salida de error dinámica].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pivot de Programa\Dinamización.Outputs[Salida de error dinámica].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Pivot de Programa\Leer datos de Programa"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Leer datos de Programa"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable">User::queryPrograma</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Pivot de Programa\Leer datos de Programa.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_PROGRAMA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_PROGRAMA]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_PROGRAMA]"
+                      name="ID_PROGRAMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[DESCRIPCION]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[DESCRIPCION]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[DESCRIPCION]"
+                      name="DESCRIPCION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_ORIGEN_PROGRAMA]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_ORIGEN_PROGRAMA]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_ORIGEN_PROGRAMA]"
+                      name="ID_ORIGEN_PROGRAMA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_ORIGEN_DOCENTE]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_ORIGEN_DOCENTE]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_ORIGEN_DOCENTE]"
+                      name="ID_ORIGEN_DOCENTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_PROGRMA_REFERENCIA]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_PROGRMA_REFERENCIA]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_PROGRMA_REFERENCIA]"
+                      name="ID_PROGRMA_REFERENCIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_VERSION]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_VERSION]"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].Columns[ID_VERSION]"
+                      name="ID_VERSION"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_PROGRAMA]"
+                      dataType="i4"
+                      name="ID_PROGRAMA" />
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[DESCRIPCION]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DESCRIPCION" />
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_ORIGEN_PROGRAMA]"
+                      dataType="guid"
+                      name="ID_ORIGEN_PROGRAMA" />
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_ORIGEN_DOCENTE]"
+                      dataType="guid"
+                      name="ID_ORIGEN_DOCENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_PROGRMA_REFERENCIA]"
+                      dataType="guid"
+                      name="ID_PROGRMA_REFERENCIA" />
+                    <externalMetadataColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB].ExternalColumns[ID_VERSION]"
+                      dataType="guid"
+                      name="ID_VERSION" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_PROGRAMA]"
+                      dataType="i4"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_PROGRAMA]"
+                      name="ID_PROGRAMA" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[DESCRIPCION]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[DESCRIPCION]"
+                      name="DESCRIPCION" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_ORIGEN_PROGRAMA]"
+                      dataType="guid"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_ORIGEN_PROGRAMA]"
+                      name="ID_ORIGEN_PROGRAMA" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_ORIGEN_DOCENTE]"
+                      dataType="guid"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_ORIGEN_DOCENTE]"
+                      name="ID_ORIGEN_DOCENTE" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_PROGRMA_REFERENCIA]"
+                      dataType="guid"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_PROGRMA_REFERENCIA]"
+                      name="ID_PROGRMA_REFERENCIA" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_VERSION]"
+                      dataType="guid"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ID_VERSION]"
+                      name="ID_VERSION" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Pivot de Programa.Paths[Salida de origen de OLE DB]"
+              endId="Package\Pivot de Programa\Dinamización.Inputs[Entrada predeterminada dinámica]"
+              name="Salida de origen de OLE DB"
+              startId="Package\Pivot de Programa\Leer datos de Programa.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F693A710-EBE7-4253-BAF8-303F2F95FCE3}"
+      DTS:From="Package\Elimina registros"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga de mongo a SQL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{277199B2-B0EF-4174-9C21-D06714693422}"
+      DTS:From="Package\Carga de mongo a SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Pivot de Programa" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Elimina registros"
+          TopLeft="262,49" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Carga de mongo a SQL"
+          TopLeft="255,174" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Pivot de Programa"
+          TopLeft="251,323" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="340.5,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,83"
+              Start="0,0"
+              End="8.5,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.5"
+                    Point2="0,41.5"
+                    Point3="4,41.5" />
+                  <mssgle:LineSegment
+                    End="4.5,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,41.5"
+                    Point2="8.5,41.5"
+                    Point3="8.5,45.5" />
+                  <mssgle:LineSegment
+                    End="8.5,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="349,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15,107"
+              Start="0,0"
+              End="-15,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.5"
+                    Point2="0,53.5"
+                    Point3="-4,53.5" />
+                  <mssgle:LineSegment
+                    End="-11,53.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11,53.5"
+                    Point2="-15,53.5"
+                    Point3="-15,57.5" />
+                  <mssgle:LineSegment
+                    End="-15,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga de mongo a SQL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Carga de mongo a SQL\Guardar datos de programa"
+          TopLeft="618,614" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Carga de mongo a SQL\Guardar datos de grado academico"
+          TopLeft="363,611" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Carga de mongo a SQL\Guardar datos de docente"
+          TopLeft="136,602" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\Carga de mongo a SQL\obtiene datos de docente desde mongo"
+          TopLeft="416,176" />
+        <EdgeLayout
+          Id="Package\Carga de mongo a SQL.Paths[Programa]"
+          TopLeft="612.75,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.75,396"
+              Start="0,0"
+              End="109.75,388.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,130.630136986301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,130.630136986301"
+                    Point2="0,134.630136986301"
+                    Point3="4,134.630136986301" />
+                  <mssgle:LineSegment
+                    End="105.75,134.630136986301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.75,134.630136986301"
+                    Point2="109.75,134.630136986301"
+                    Point3="109.75,138.630136986301" />
+                  <mssgle:LineSegment
+                    End="109.75,388.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.271640625,139.630136986301,43.20671875,11.3359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de mongo a SQL.Paths[GradoAcademico]"
+          TopLeft="548.5,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-63.5,393"
+              Start="0,0"
+              End="-63.5,385.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,192.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,192.5"
+                    Point2="0,196.5"
+                    Point3="-4,196.5" />
+                  <mssgle:LineSegment
+                    End="-59.5,196.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59.5,196.5"
+                    Point2="-63.5,196.5"
+                    Point3="-63.5,200.5" />
+                  <mssgle:LineSegment
+                    End="-63.5,385.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.37955078125,201.5,75.2591015625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga de mongo a SQL.Paths[Docente]"
+          TopLeft="484.25,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-247.75,384"
+              Start="0,0"
+              End="-247.75,376.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.550435865504" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,126.550435865504"
+                    Point2="0,130.550435865504"
+                    Point3="-4,130.550435865504" />
+                  <mssgle:LineSegment
+                    End="-243.75,130.550435865504" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-243.75,130.550435865504"
+                    Point2="-247.75,130.550435865504"
+                    Point3="-247.75,134.550435865504" />
+                  <mssgle:LineSegment
+                    End="-247.75,376.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-142.50634765625,135.550435865504,37.2626953125,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de mongo a SQL\Guardar datos de programa">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de mongo a SQL\Guardar datos de grado academico">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga de mongo a SQL\Guardar datos de docente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Pivot de Programa">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Pivot de Programa\Leer datos de Programa"
+          TopLeft="518,189" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Pivot de Programa\Dinamización"
+          TopLeft="556,335" />
+        <EdgeLayout
+          Id="Package\Pivot de Programa.Paths[Salida de origen de OLE DB]"
+          TopLeft="614,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,104"
+              Start="0,0"
+              End="12.5,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="4,52" />
+                  <mssgle:LineSegment
+                    End="8.5,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,52"
+                    Point2="12.5,52"
+                    Point3="12.5,56" />
+                  <mssgle:LineSegment
+                    End="12.5,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-1.75,57,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Pivot de Programa\Leer datos de Programa">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
