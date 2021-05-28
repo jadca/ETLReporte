@@ -16,7 +16,49 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">http://localhost:59515/</SSIS:Property>
+        SSIS:Name="Value">http://172.16.75.55:59515/</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="conexionADOLinu">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{eaec729f-db24-4509-a2d0-fa9347a08a3c}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=172.16.90.85;User ID=userDios;Password=userDio$;Initial Catalog=db_linu_DEV;Application Name=SSIS-Docente-{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}172.16.90.85.db_linu_DEV;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="conexionOLEDBLinu">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{29ebfd69-d0e4-4fe8-b6a1-8df5e2800805}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=172.16.90.85;Uid=userDios; Pwd=userDio$;Initial Catalog=db_linu_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>

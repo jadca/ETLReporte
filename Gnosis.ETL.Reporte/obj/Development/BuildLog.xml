@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Gnosis.ETL.Reporte</Name>
-    <LastWriteTime>2021-05-28T14:33:06.4977728Z</LastWriteTime>
+    <LastWriteTime>2021-05-28T15:19:44.0245237Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -13,7 +13,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Docente.dtsx</Name>
-      <LastWriteTime>2021-05-28T14:37:22.7549883Z</LastWriteTime>
+      <LastWriteTime>2021-05-28T15:19:44.0145241Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

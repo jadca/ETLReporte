@@ -11,39 +11,38 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Docente"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{1BC64192-A183-46A6-A2E7-332E7774279B}">
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{53CFFD1B-0091-4C19-B91C-CF82CEA0C3CD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{3F0EBDD7-AD67-4752-9C03-8E31894F9813}"
-      DTS:ObjectName="172.16.90.85.db_linu_DEV1">
+      DTS:refId="Package.ConnectionManagers[ConexionADOLinu]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}"
+      DTS:ObjectName="ConexionADOLinu">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::conexionADOLinu]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;">
+          DTS:ConnectionString="Data Source=172.16.90.85;User ID=userDios;Initial Catalog=db_linu_DEV;Application Name=SSIS-Docente-{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}172.16.90.85.db_linu_DEV;">
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABtU2EEMjK4QHqxYDcsSixlAAAAAASAAACgAAAAEAAAAOsj+aDA9mD8hTUzQZVCgokQAAAAorvjxO8koT7vEYj40MweNhQAAAD2X870g9IKdzLbGwh/aBARfjgptQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACTokxFwQFOOeKw8Op/ypmxAAAAAASAAACgAAAAEAAAAL5c/kGFn9Nd1XMvHV3/qNMYAAAATY6m7XoHD7fUzH6gBwqn5ofXShpY+uA2FAAAAOwbyZfGjihtARFgDrgq/wlICgtp</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[conexion_linu_dev]"
-      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-      DTS:DTSID="{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}"
-      DTS:ObjectName="conexion_linu_dev">
+      DTS:refId="Package.ConnectionManagers[ConexionOLEDBLinu]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F0EBDD7-AD67-4752-9C03-8E31894F9813}"
+      DTS:ObjectName="ConexionOLEDBLinu">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::conexionOLEDBLinu]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Application Name=SSIS-Docente-{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}172.16.90.85.db_linu_DEV;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABOa9Z839njzV5gRsVInEDOAAAAAASAAACgAAAAEAAAAMMeN82khe4EhF1Vxd/y9YEQAAAAO0UhRBcpCM/2yCq9TGsP9xQAAADsV0TdUliiOReVBjKcmuy6zpwCWA</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=172.16.90.85;Uid=userDios;Initial Catalog=db_linu_DEV; Pwd=userDio$;Provider=SQLNCLI11.1;Persist Security Info=True;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -151,8 +150,8 @@
               <connections>
                 <connection
                   refId="Package\Carga de mongo a SQL\Guardar datos de docente.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
-                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionADOLinu]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionADOLinu]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -294,8 +293,8 @@
               <connections>
                 <connection
                   refId="Package\Carga de mongo a SQL\Guardar datos de grado academico.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
-                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionADOLinu]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionADOLinu]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -444,8 +443,8 @@
               <connections>
                 <connection
                   refId="Package\Carga de mongo a SQL\Guardar datos de programa.Connections[IDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[conexion_linu_dev]"
-                  connectionManagerRefId="Package.ConnectionManagers[conexion_linu_dev]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionADOLinu]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionADOLinu]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -2567,8 +2566,8 @@ AAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\Pivot de Programa\Leer datos de Programa.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
-                  connectionManagerRefId="Package.ConnectionManagers[172.16.90.85.db_linu_DEV1]"
+                  connectionManagerID="Package.ConnectionManagers[ConexionOLEDBLinu]"
+                  connectionManagerRefId="Package.ConnectionManagers[ConexionOLEDBLinu]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -2758,17 +2757,17 @@ AAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Elimina registros"
-          TopLeft="262,49" />
-        <NodeLayout
           Size="188,42"
           Id="Package\Carga de mongo a SQL"
           TopLeft="255,174" />
         <NodeLayout
+          Size="157,42"
+          Id="Package\Elimina registros"
+          TopLeft="262,49" />
+        <NodeLayout
           Size="166,42"
           Id="Package\Pivot de Programa"
-          TopLeft="251,323" />
+          TopLeft="275,326" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="340.5,91">
@@ -2809,26 +2808,26 @@ AAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-15,107"
+              EndConnector="9,110"
               Start="0,0"
-              End="-15,99.5">
+              End="9,102.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,51" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,49.5"
-                    Point2="0,53.5"
-                    Point3="-4,53.5" />
+                    Point1="0,51"
+                    Point2="0,55"
+                    Point3="4,55" />
                   <mssgle:LineSegment
-                    End="-11,53.5" />
+                    End="5,55" />
                   <mssgle:CubicBezierSegment
-                    Point1="-11,53.5"
-                    Point2="-15,53.5"
-                    Point3="-15,57.5" />
+                    Point1="5,55"
+                    Point2="9,55"
+                    Point3="9,59" />
                   <mssgle:LineSegment
-                    End="-15,99.5" />
+                    End="9,102.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

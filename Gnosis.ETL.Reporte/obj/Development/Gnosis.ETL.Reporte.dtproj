@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">12-78680181</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAACAAAAAAADZgAAwAAAABAAAAA+Q24Z8ujeWBUgwCsZQWUNAAAAAASAAACgAAAAEAAAAJJ5JyGEq+6Pw3/yJ3p/YT+IAAAA8tPkDmRxhVZP6ldJJGvenXuiJ1zTwT8ONEcdnFzMSUQ6PETa4sl5ys6N+iZRmOsGbaj8pPKuGGRjAGXfRkaR1OQTi8JwOkOHDthUR1fNl5uhewABAfVUUtLez2DRcgMSCyCDYdLQCwP2R4wkvbkU8Z01+D/bLDF4bZUkJq8Ya/o9CqcWUecdNxQAAADUsM0ggfd3QKfHJ6ZimkIHt5pOHQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAACAAAAAAADZgAAwAAAABAAAABM2ErCSFAs+ajmPRsZLbugAAAAAASAAACgAAAAEAAAAJ3eouGS7v1w4ZJoPZAU7+2IAAAAQ+uazb9OR9vYMbJHICxXaZytvhk9pIW+to2/Gvdjx66DyQverkDIKFPpJhfMYaNooCTs2AlpIO3DLIgJzT8clPDuMNo6mnSd/FI4Li8f/hM+Y22IVvqQiD6xDRv3M4TndOTl9/QOGCdvHIHo2G7KmP1iF5oHtgpyRTUb8qd3pZ1MpuaH+3/z2hQAAABIA1ss8fmRRneF4xEzHi5qbNZOXw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -60,10 +60,10 @@
                 <SSIS:Property SSIS:Name="Name">Docente</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">70</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">75</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1BC64192-A183-46A6-A2E7-332E7774279B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{53CFFD1B-0091-4C19-B91C-CF82CEA0C3CD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -84,22 +84,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.ConnectionString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Provider=SQLNCLI11.1;Persist Security Info=True;</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.ConexionADOLinu.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -114,7 +99,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.Password">
+                <SSIS:Parameter SSIS:Name="CM.ConexionADOLinu.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -128,7 +113,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.ConexionADOLinu.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -143,7 +128,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.ConexionADOLinu.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -158,7 +143,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.172.16.90.85.db_linu_DEV1.UserName">
+                <SSIS:Parameter SSIS:Name="CM.ConexionADOLinu.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -169,26 +154,11 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">userDev</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">userDios</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.ConnectionString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=172.16.90.85;User ID=userDev;Initial Catalog=db_linu_DEV;Application Name=SSIS-Docente-{14E7D68C-16B0-4AE6-ABAD-31FBE51BBAD2}172.16.90.85.db_linu_DEV;</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.InitialCatalog">
+                <SSIS:Parameter SSIS:Name="CM.ConexionOLEDBLinu.InitialCatalog">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -203,7 +173,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.Password">
+                <SSIS:Parameter SSIS:Name="CM.ConexionOLEDBLinu.Password">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -217,7 +187,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.RetainSameConnection">
+                <SSIS:Parameter SSIS:Name="CM.ConexionOLEDBLinu.RetainSameConnection">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -232,7 +202,7 @@
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.ServerName">
+                <SSIS:Parameter SSIS:Name="CM.ConexionOLEDBLinu.ServerName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -247,7 +217,7 @@
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="CM.conexion_linu_dev.UserName">
+                <SSIS:Parameter SSIS:Name="CM.ConexionOLEDBLinu.UserName">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">
                     </SSIS:Property>
@@ -258,7 +228,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">userDev</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">userDios</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
