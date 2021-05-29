@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Docente"
   DTS:PackageType="5"
-  DTS:VersionBuild="194"
-  DTS:VersionGUID="{A87FE4C8-EBFF-4829-9FBF-2112ED38D5E6}">
+  DTS:VersionBuild="197"
+  DTS:VersionGUID="{49911ECD-D983-455D-AE7A-0B38FE873892}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAA5ciKYRHlV3cBf0unI1VhIAAAAAASAAACgAAAAEAAAAFHKYlDh9XBYhq0qpObT/xsYAAAAh8LzDBMD0lDDwozanoBM5NI0fCal5/b0FAAAAJ+u0fouqJ/hKY//0F6Kq+T3G4OB</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBrTWI9v+EGmxge3KlrpggAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAnKwxAuwNXI2AwaqG2Bj4tAAAAAASAAACgAAAAEAAAAPW3lAb9CnsxGbAZoR6fK2oYAAAAAbsE98MvNOOzAxoxsVU/UQthxcfzKHvJFAAAACd1qrdiIkcLR/HmTFMHbuVXNide</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -2473,6 +2473,24 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Crea Plantilla Docente"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="File System Task"
+      DTS:DTSID="{50677492-30CC-4087-ADFD-C35B1FF3A575}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Crea Plantilla Docente"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskSourcePath="User::plantillaDocente"
+          TaskIsSourceVariable="True"
+          TaskDestinationPath="User::nombreNuevoArchivo"
+          TaskIsDestinationVariable="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Elimina registros"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2486,24 +2504,6 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{3F0EBDD7-AD67-4752-9C03-8E31894F9813}"
           SQLTask:SqlStatementSource="delete from docente;  &#xA;delete from programa;&#xA;delete from grado_academico;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\File System Task"
-      DTS:CreationName="Microsoft.FileSystemTask"
-      DTS:Description="File System Task"
-      DTS:DTSID="{50677492-30CC-4087-ADFD-C35B1FF3A575}"
-      DTS:ExecutableType="Microsoft.FileSystemTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="File System Task"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <FileSystemData
-          TaskSourcePath="User::plantillaDocente"
-          TaskIsSourceVariable="True"
-          TaskDestinationPath="User::nombreNuevoArchivo"
-          TaskIsDestinationVariable="True" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5019,7 +5019,7 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{F6547372-D6BD-4BDE-BB3A-2A7149121B7D}"
-      DTS:From="Package\File System Task"
+      DTS:From="Package\Crea Plantilla Docente"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Elimina registros" />
@@ -5043,10 +5043,10 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="157,42"
           Id="Package\Elimina registros"
-          TopLeft="262,49" />
+          TopLeft="277,50" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\File System Task"
+          Size="182,42"
+          Id="Package\Crea Plantilla Docente"
           TopLeft="514,47" />
         <NodeLayout
           Size="166,42"
@@ -5054,30 +5054,18 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
           TopLeft="266,335" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="340.5,91">
+          TopLeft="352.25,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.5,83"
+              EndConnector="0,82"
               Start="0,0"
-              End="8.5,75.5">
+              End="0,74.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.5"
-                    Point2="0,41.5"
-                    Point3="4,41.5" />
-                  <mssgle:LineSegment
-                    End="4.5,41.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.5,41.5"
-                    Point2="8.5,41.5"
-                    Point3="8.5,45.5" />
-                  <mssgle:LineSegment
-                    End="8.5,75.5" />
+                    End="0,74.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5110,18 +5098,18 @@ AAAAAAAAAAAAAAAA]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="514,69">
+          TopLeft="514,69.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-95,0"
+              EndConnector="-80,0"
               Start="0,0"
-              End="-87.5,0">
+              End="-72.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-87.5,0" />
+                    End="-72.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
